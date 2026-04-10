@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+<body class="h-screen">
+    <%- include('components/header') %>
+    
+    <a href="/form">Go to Form</a>
+    <a href="/allusers">Go to All Users</a>
+
+        
+    <h1><%= page %></h1>
+    <% if(typeof para !== 'undefined'){ %> 
+        <p><%= para %></p> 
+    <% } else { %>
+        <p>Paragraph is not available</p>
+    <% } %>    
+
+
+    <ul>
+        <% items.forEach(item => { %>
+            <li><%= item %></li>
+        <% }) %>
+    </ul>
+
+
+    <%  const users = [
+        { name: "Ali", age: 22, city: "Lahore" },
+        { name: "Ahmed", age: 25, city: "Karachi" },
+        { name: "Sara", age: 21, city: "Islamabad" },
+        { name: "Ayesha", age: 24, city: "Multan" },
+        { name: "Usman", age: 27, city: "Faisalabad" }
+        ] %>
+        
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.name %></td>
+                    <td><%= user.age %></td>
+                    <td><%= user.city %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <%- include('components/footer') %>
+</body>
+</html>
