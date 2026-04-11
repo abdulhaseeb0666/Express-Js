@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express();
+const mongoose = require('mongoose');
+const User = require('./models/user.models');
 
 // Database Connection
-const mongoose = require('mongoose');
 mongoose.connect("mongodb://localhost:27017/users")
 .then(() => {
     console.log("Database connected");
@@ -20,31 +21,44 @@ app.use(express.static("public"))
 
 
 // Routes
-app.get('/' , (req,res) => {
-    res.render("home")
+app.get('/' , async (req,res) => {
+    const users =await User.find()
+    res.render('home' , {users})
 })
 
 app.get('/add-user' , (req , res) => {
     res.render('add-user')
 })
 
-app.post('/add-user' , (req , res) => {
-    const {name , email , password} = req.body;
+app.post('/add-user' , async (req , res) => {
+    const {first_name , last_name , email , phone , address} = req.body;
+
+    await User.create({
+        first_name , last_name , email , phone , address
+    })
+    res.redirect('/')
+})
+
+app.get('/update-user/:id' , async (req , res) => {
+    const user = await User.findById({_id : req.params.id})
+    res.render('update-user' , {user})
+})
+
+app.post('/update-user/:id' , async (req , res) => {
+    const {first_name , last_name , email , phone , address} = req.body;
+
+    await User.findByIdAndUpdate({_id : req.params.id} , {
+        first_name , last_name , email , phone , address
+    })
     
+    res.redirect('/')
 })
 
-app.get('/update-user' , (req , res) => {
-    res.render('update-user')
+app.get('/delete-user/:id' , async (req , res) => {
+
+    await User.findByIdAndDelete({_id : req.params.id})
+    res.redirect("/")
 })
-
-app.get('/delete-user' , (req , res) => {
-
-})
-
-app.get('/all-users' , (req , res) => {
-
-})
-
  
  
 
