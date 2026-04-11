@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-black text-white h-screen">
+    
+    <form method="post" action="/add-user" class="absolute flex flex-col bg-gray-900 border-2 border-white rounded-2xl p-2 top-20 left-[50%] translate-x-[-50%] gap-2">
+        <h1 class="text-center font-bold text-xl">Update User</h1>
+
+        <label class="font-bold mt-2" for="name">Name</label>
+        <input class="p-1 px-2 border-1 border-white bg-black rounded-md w-50" type="text" name="name" id="name">
+        
+        <label class="font-bold mt-2" for="email">Email</label>
+        <input class="p-1 px-2 border-1 border-white bg-black rounded-md w-50" type="email" name="email" id="email">
+        
+        <label class="font-bold mt-2" for="password">Password</label>
+        <input class="p-1 px-2 border-1 border-white bg-black rounded-md w-50" type="password" name="password" id="password">
+        
+        <button class="bg-white w-fit text-black font-bold text-center place-self-center px-2 py-1 border-2 border-green-600 hover:cursor-pointer hover:bg-green-600 hover:border-white hover:scale-105 hover:text-white rounded-xl" type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
