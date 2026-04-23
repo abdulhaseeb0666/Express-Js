@@ -4,6 +4,9 @@ const app = express();
 import connectDB from "./config/database.js";
 import contactRoutes from "./Routes/contacts.routes.js";
 
+import dotenv from "dotenv";
+dotenv.config();
+const PORT = process.env.PORT
 
 // Database Connection
 connectDB();
@@ -18,6 +21,6 @@ app.use(express.static("public"))
 // Routes
 app.use("/" , contactRoutes);
 
-app.listen(3000 , () => {
-    console.log("Server started on port 3000");
+app.listen(PORT , () => {
+    console.log(`Server started on PORT ${PORT}`);
 })
