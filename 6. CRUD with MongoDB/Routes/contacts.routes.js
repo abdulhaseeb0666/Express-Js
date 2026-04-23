@@ -1,13 +1,33 @@
-import mongoose from "mongoose";
+import express from "express";
+const router = express.Router();
 
-const userSchema = new mongoose.Schema({
-    first_name: String,
-    last_name: String,
-    email: String,
-    phone: String,
-    address: String
-});
+// Controller Functions
+import {  
+    getContacts,
+    addForm,
+    addUser,
+    updateForm,
+    updateUser,
+    deleteUser,
+} from "../controller/contacts.controller.js";
 
-const User = mongoose.model("User", userSchema);
 
-export default User;
+// Get all users
+router.get("/", getContacts);
+
+// Show add form
+router.get("/add-user", addForm);
+
+// Add user
+router.post("/add-user", addUser);
+
+// Show update form
+router.get("/update-user/:id", updateForm);
+
+// Update user
+router.post("/update-user/:id", updateUser);
+
+// Delete user
+router.get("/delete-user/:id", deleteUser);
+
+export default router;

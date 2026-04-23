@@ -1,18 +1,12 @@
 import express from "express";
-import mongoose from "mongoose";
-import contactRoutes from "./Routes/contacts.routes.js";
-
 const app = express();
+
+import connectDB from "./config/database.js";
+import contactRoutes from "./Routes/contacts.routes.js";
 
 
 // Database Connection
-mongoose.connect("mongodb://localhost:27017/users")
-.then(() => {
-    console.log("Database connected");
-})
-.catch((err) => {
-    console.log(err);
-})
+connectDB();
 
 
 // Middlewares
