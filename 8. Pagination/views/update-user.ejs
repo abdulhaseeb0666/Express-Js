@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-black text-white h-screen">
+
+    <form method="post" action="/update-user/<%= user._id %>" class="w-100 absolute flex flex-col bg-gray-900 border-2 border-white rounded-2xl px-5 py-2 top-20 left-[50%] translate-x-[-50%] gap-2">
+        <h1 class="text-center font-bold text-xl">Add User</h1>
+
+        <label class="font-bold mt-2" for="name">First Name</label>
+        <input class="p-1 text-white px-2 border-1 border-white bg-black rounded-md w-full" type="text" name="first_name" id="first_name" value="<%= user.first_name %>">
+        
+        <label class="font-bold mt-2" for="name">Last Name</label>
+        <input class="p-1 text-white px-2 border-1 border-white bg-black rounded-md w-full" type="text" name="last_name" id="last_name" value="<%= user.last_name %>">
+        
+        <label class="font-bold mt-2" for="name">Email</label>
+        <input class="p-1 text-white px-2 border-1 border-white bg-black rounded-md w-full" type="email" name="email" id="email" value="<%= user.email  %>">
+        
+        <label class="font-bold mt-2" for="email">Phone</label>
+        <input class="p-1 text-white px-2 border-1 border-white bg-black rounded-md w-full" type="text" name="phone" id="phone" value="<%= user.phone  %>">
+        
+        <label class="font-bold mt-2" for="password">Address</label>
+        <input class="p-1 text-white px-2 border-1 border-white bg-black rounded-md w-full" type="text" name="address" id="address" value="<%= user.address  %>">
+        
+        <button class="bg-white w-fit text-black font-bold text-center place-self-center px-2 py-1 border-2 border-green-600 hover:cursor-pointer hover:bg-green-600 hover:border-white hover:scale-105 hover:text-white rounded-xl" type="submit">Submit</button>
+    </form>
+    
+</body>
+</htm vlaue=<%  %>>
