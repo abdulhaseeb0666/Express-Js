@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    
+    <h1 class="font-semibold text-2xl">Single File</h1>
+    <form action="/submit" method="post" enctype="multipart/form-data">
+        <input type="file" class="m-5" name="image" placeholder="Image">
+        <button type="submit" class="bg-gray-200 p-1 border border-gray-300 rounded-xl">Submit</button>
+    </form>
+    
+    <h1 class="font-semibold text-2xl">Multiple File</h1>
+    <form action="/multiple-submit" method="post" enctype="multipart/form-data">
+        <input type="file" class="m-5" name="multiple-images" placeholder="Image" multiple>
+        <button type="submit" class="bg-gray-200 p-1 border border-gray-300 rounded-xl">Submit</button>
+    </form>
+    
+    <h1 class="font-semibold text-2xl">User Documents Submission</h1>
+    <form action="/user-submit" method="post" enctype="multipart/form-data">
+        <label class=" text-blue-600" for="image">Profile Image:</label>
+        <input type="file" class="m-5" name="image" placeholder="Image">
+        <label class=" text-blue-600" for="documents">Documents:</label>
+        <input type="file" class="m-5" name="documents" placeholder="Documents" multiple>
+        <button type="submit" class="bg-gray-200 p-1 border border-gray-300 rounded-xl">Submit</button>
+    </form>
+
+</body>
+</html>
