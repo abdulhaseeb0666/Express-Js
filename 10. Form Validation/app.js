@@ -22,20 +22,34 @@ var formValidations = [
         .notEmpty().withMessage("Name cannot be empty"),
     body("password")
         .isLength({min : 8}).withMessage("Password must be at least 8 characters long")
+        .isStrongPassword().withMessage("Password must be strong")
+        .trim()
+        .escape()
+        .notEmpty().withMessage("Password cannot be empty"),
+    body("age")
+        .isNumeric().withMessage("Age must be a number")
+        .isInt().withMessage("Age must be an integer")
+        .toInt()
+        .trim()
+        .escape()
+        .notEmpty().withMessage("Age cannot be empty")
+        .custom((vakue) => {
+            if (vakue < 18) {
+                throw new Error("Age must be Greater than 18");
+            }
+            return true;
+        })
 ]
 
-
 app.get("/" , (req , res) => {
-    res.render("form")
+    res.render("form" , { errors: [] });
 })
 
 app.post("/submit", formValidations, (req, res) => {
-    const error = validationResult(req);
-
-    if (!error.isEmpty()) {
-        return res.status(400).json(error.array()); // important: return
+    const result = validationResult(req);
+    if(!result.isEmpty()) {
+        return res.render("form" , { errors: result.array() });
     }
-
     res.send(req.body);
 });
 

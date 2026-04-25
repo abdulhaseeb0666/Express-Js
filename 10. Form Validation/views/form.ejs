@@ -10,14 +10,23 @@
     <main>
         <form action="/submit" method="post" class="w-fit absolute top-10 left-[50%] translate-x-[-50%] flex flex-col gap-2 border-2 bg-gray-900 rounded-2xl p-5">
             <h1 class="text-2xl font-bold text-center">Registration Form</h1>
+                <% if(errors.length > 0) { %>
+                    <div class="bg-red-500 w-fit h-fit rounded-2xl border-2 border-red-800 p-2">
+                        <ul class="list-disk">
+                            <% errors.forEach((err) => { %>
+                                <li class="text-red-950 font-bold text-center list-disk"><%= err.msg %></li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                <% } %>
                 <label class="text-md font-bold" for="name">Name</label>
                 <input class="border-1 bg-gray-500 rounded-xl px-2 py-1 font-semibold w-100" type="text" id="name" name="name">
                 <label class="text-md font-bold" for="email">Email</label>
                 <input class="border-1 bg-gray-500 rounded-xl px-2 py-1 font-semibold w-100" type="email" id="email" name="email">
                 <label class="text-md font-bold" for="password">Password</label>
                 <input class="border-1 bg-gray-500 rounded-xl px-2 py-1 font-semibold w-100" type="password" id="password" name="password">
-                <label class="text-md font-bold" for="dob">Date of Birth</label>
-                <input class="border-1 bg-gray-500 rounded-xl px-2 py-1 font-semibold w-100" type="date" id="dob" name="dob">
+                <label class="text-md font-bold" for="dob">Age</label>
+                <input class="border-1 bg-gray-500 rounded-xl px-2 py-1 font-semibold w-100" type="number" id="age" name="age">
             <button class="bg-blue-600 w-fit flex place-self-center p-2 font-bold border-2 border-black rounded-2xl hover:cursor-pointer hover:bg-blue-800 hover:scale-105 hover:text-white" type="submit">Submit</button>
         </form>
     </main>
