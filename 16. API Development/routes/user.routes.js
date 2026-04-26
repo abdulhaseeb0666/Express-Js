@@ -29,7 +29,7 @@ router.get("/:id" , async (req, res) => {
 
 
 // Add new User
-router.post("/add-user" , async(req , res) => {
+router.post("/" , async(req , res) => {
     try {
         const newUser = await User.create(req.body);
         res.status(201).json(newUser);
@@ -39,7 +39,7 @@ router.post("/add-user" , async(req , res) => {
 })
 
 // Update User by ID
-router.put("/update-user/:id" , async(req , res) => {
+router.put("/:id" , async(req , res) => {
     try {
         const updatedUser = await User.findByIdAndUpdate(req.params.id , req.body , {new : true});
         if(!updatedUser){
@@ -52,7 +52,7 @@ router.put("/update-user/:id" , async(req , res) => {
 })
 
 // Delete User by ID
-router.delete("/delete-user/:id" , async(req , res) => {
+router.delete("/:id" , async(req , res) => {
     try {
         const deletedUser = await User.findByIdAndDelete(req.params.id);
         if(!deletedUser){

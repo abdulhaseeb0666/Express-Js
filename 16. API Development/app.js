@@ -8,6 +8,7 @@ connectDB();
 // Middleware
 app.use(express.json());
 app.set("view engine", "ejs");
+app.use(express.urlencoded({extended : true}));
 
 // Routes
 import userRoutes from "./routes/user.routes.js";
